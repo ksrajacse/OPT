@@ -5,6 +5,7 @@ public class OPT {
 		// TODO Auto-generated method stub
 		System.out.println("Hai");
 		//updated
+		//Updated
 		System.out.println("raja");
 	}
 
