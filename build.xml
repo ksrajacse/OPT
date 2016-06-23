@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="OPT">
+    <property name="app.name" value="OnlinePayments"/>
+    <property name="Util.name" value="OPTUtil"/>
+    <property name="App.dir" value="."/>
+    <property name="Util.dir" value="${App.dir}"/>
+    <property name="Util.src.dir" value="${Util.dir}/src"/>
+    <property name="Util.build.dir" value="${Util.dir}/build"/>
+
+    <target name="CleanAll" description="Cleaning All the files">
+        <delete file="${App.dir}/${Util.name}.jar"/>
+		<delete dir="${Util.build.dir}"/>
+		<mkdir dir="${Util.build.dir}"/>
+    </target>
+
+	 <path id="Util.compile.classpath">
+	        
+	    </path>
+	
+    <target name="CompileUtil" description="Compile Util source ">
+        <javac srcdir="${Util.src.dir}" destdir="${Util.build.dir}" includeantruntime="false">
+            <classpath refid="Util.compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="GenerateUtilJar" depends="CompileUtil" description="Generate JAR file for Util">
+        <jar destfile="${App.dir}/${Util.name}.jar">
+            <fileset dir="${Util.build.dir}">
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="OPT" depends="CleanAll, GenerateUtilJar">
+    </target>
+</project>
+
